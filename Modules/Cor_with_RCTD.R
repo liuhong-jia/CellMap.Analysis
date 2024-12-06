@@ -1,8 +1,11 @@
 
 ##CellMap
 library(dplyr)
-RCTD <- readRDS("your_path/RCTD.rds")
-CellMap <- readRDS("your_path/CellMap.rds")
+
+##Read in the RCTD results and the mapping results of each tool.
+
+RCTD <- readRDS("RCTD.rds")
+CellMap <- readRDS("CellMap.rds")
 metadata <- CellMap@meta.data[,c("CellType")]
 
 colnames(RCTD) <- gsub("L2_3 IT", "L2/3 IT", colnames(RCTD))
@@ -15,8 +18,8 @@ CellMap.R <- cor.test(prop, prop.RCTD, method = "pearson")
 
 library(dplyr)
 
-fraction <- read.csv("your_path/fractional_abundances_by_spot.csv")
-RCTD <- readRDS("your_path/RCTD.rds")
+fraction <- read.csv("fractional_abundances_by_spot.csv")
+RCTD <- readRDS("RCTD.rds")
 rownames(fraction) <- fraction[, 1]
 fraction <- fraction[, -1]
 
@@ -36,8 +39,8 @@ CytoSPACE.R <- cor.test(prop.CytoSpace,prop.RCTD, method = "pearson")
 
 
 ###CellTrek
-CellTrek <- readRDS("your_path/CellTrek.rds")
-RCTD <- readRDS("your_path/RCTD.rds")
+CellTrek <- readRDS("CellTrek.rds")
+RCTD <- readRDS("RCTD.rds")
 
 metadata <- CellTrek@meta.data[,c("cell_type")]
 colnames(RCTD) <- sub("L2_3 IT", "L2/3 IT",colnames(RCTD))
@@ -55,8 +58,8 @@ CellTrek.R <- cor.test(prop.RCTD,prop, method = "pearson")
 
 ###Tangram
 
-Tangram <- readRDS("your_path/Tangram.rds")
-RCTD <- readRDS("your_path/RCTD.rds")
+Tangram <- readRDS("Tangram.rds")
+RCTD <- readRDS("RCTD.rds")
 metadata <- Tangram@meta.data[,c("CellType")]
 
 colnames(RCTD) <- sub("L2_3 IT", "L2/3 IT",colnames(RCTD))
